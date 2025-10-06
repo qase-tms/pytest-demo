@@ -75,17 +75,41 @@ def test_dynamic_qase_param(env: str):
 
 
 # ---------------------------------------------------------------------------------------
-# A test where one param is IGNORED and doesn't show up in the Qase test run
+# A test where one parameter is IGNORED and doesn't show up in the Qase test run
 # ---------------------------------------------------------------------------------------
 
 @pytest.mark.parametrize("email", ["@abc", "@xyz", "@asdf"])
-@qase.parametrize_ignore("test_data", ["data1", "data2"])
-def test_with_ignored_param(browser, test_data):
+@pytest.mark.parametrize("role", ["admin", "user"])
+
+@qase.parametrize_ignore("role", ["admin", "user"])
+def test_with_ignored_param(browser, role):
     """
     'email' will appear in Qase reports.
-    'test_data' is used in the test but not reported to Qase.
+    'role' is used in the test but not reported to Qase.
     """
     assert browser in ["@abc", "@xyz", "@asdf"]
-    assert test_data in ["data1", "data2"]
+    assert role in ["admin", "user"]
 
-    print(f"Test executed on browser: {browser} with test data: {test_data}")
+
+# ---------------------------------------------------------------------------------------
+# A test where one indirect parameter is IGNORED and doesn't show up in the Qase test run
+# ---------------------------------------------------------------------------------------
+
+@pytest.fixture
+def test_data(request):
+    return ["data1", "data2"]
+
+# Parametrize emails
+@pytest.mark.parametrize("email", ["@abc", "@xyz", "@asdf"])
+
+@qase.parametrize_ignore("test_data", ["data1", "data2"], indirect=True)
+
+def test_with_ignored_param(email, test_data):
+    """
+    'email' will appear in Qase reports.
+    'test_data' is used in the test but ignored in Qase.
+    """
+    assert email in ["@abc", "@xyz", "@asdf"]
+    assert test_data == ["data1", "data2"]  # compare directly to the fixture output
+
+    print(f"Test executed on email: {email} with test data: {test_data}")
