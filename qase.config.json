@@ -1,0 +1,50 @@
+{
+  "mode": "testops",
+  "fallback": "report",
+  "debug": true,
+  "report": {
+    "driver": "local",
+    "connection": {
+      "local": {
+        "path": "./build/qase-report",
+        "format": "json"
+      }
+    }
+  },
+  "testops": {
+    "api": {
+      "token": "<REPORTER-TOKEN>",
+      "host": "qase.io"
+    },
+    "run": {
+      "tags":["tag1", "tag2"],
+      "complete": true
+    },
+    "project": "<PROJECT-CODE>",
+    "batch": {
+      "size": 200
+    },
+    "statusFilter": ["skipped"],
+    "statusMapping": {
+        "invalid": "failed"
+    },
+    "configurations": {
+      "values": [
+        {
+          "name": "Browser",
+          "value": "Chrome"
+        },
+        {
+          "name": "Operating System",
+          "value": "Windows"
+        }
+      ],
+      "createIfNotExists": true
+    }
+  },
+  "framework": {
+    "pytest": {
+      "captureLogs": true
+    }
+  }
+}
