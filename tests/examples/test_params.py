@@ -80,12 +80,12 @@ def test_dynamic_qase_param(env: str):
 
 @pytest.mark.parametrize("email", ["@abc", "@xyz", "@asdf"])
 @qase.parametrize_ignore("test_data", ["data1", "data2"])
-def test_with_ignored_param(browser, test_data):
+def test_with_ignored_param(email, test_data):
     """
     'email' will appear in Qase reports.
     'test_data' is used in the test but not reported to Qase.
     """
-    assert browser in ["@abc", "@xyz", "@asdf"]
+    assert email in ["@abc", "@xyz", "@asdf"]
     assert test_data in ["data1", "data2"]
 
-    print(f"Test executed on browser: {browser} with test data: {test_data}")
+    print(f"Test executed on browser: {email} with test data: {test_data}")

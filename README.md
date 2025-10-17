@@ -2,6 +2,12 @@
 
 This is an example repository with tests in the `tests/examples/` directory. To run the tests :
 
+### Compatibility
+
+As of this release, Python 3.7 and 3.8 are no longer supported.
+The supported Python versions are:
+3.9, 3.10, 3.11, 3.12, and 3.13.
+
 1. Clone the repository with `git clone https://github.com/cskmnrpt/qase-pytest.git`.
    To clone a different branch, other than `main`, use this command - <br> `git clone --single-branch --branch <branch-name> https://github.com/cskmnrpt/qase-pytest.git`
 
@@ -21,3 +27,114 @@ This is an example repository with tests in the `tests/examples/` directory. To 
 5. Create a `qase.config.json` in the root of the repository, and add your token, and project code.
 
 6. Run `pytest`.
+
+## New Features & Configuration
+### Test Run Tags
+You can now add tags to test runs. Update your `qase.config.json`, environment variables, or CLI flags.
+
+```json
+{
+  "testops": {
+    "run": {
+      "tags": ["smoke", "regression"]
+    }
+  }
+}
+
+```
+#### Environment variable example:
+```bash
+export QASE_TESTOPS_RUN_TAGS="smoke,regression"
+```
+#### CLI flag example:
+```bash
+pytest --qase-testops-run-tags "smoke,regression"
+```
+### Excluding Parameters from Results
+Specify parameters to exclude from results:
+```json
+{
+"exclude_parameters": ["browser", "environment"]
+}
+```
+#### Environment variable example:
+```bash
+export QASE_EXCLUDE_PARAMS="browser,environment"
+```
+#### CLI flag example:
+```bash
+pytest --qase-exclude-params "browser,environment"
+```
+### Test Run Configurations
+You can specify configurations for test runs via `qase.config.json`, environment variables, or CLI flags.
+```json
+{
+  "testops": {
+    "configurations": {
+      "values": [
+        {
+          "name": "browser",
+          "value": "chrome"
+        },
+        {
+          "name": "environment",
+          "value": "staging"
+        }
+      ],
+      "createIfNotExists": true
+    }
+  }
+}
+```
+
+#### Environment variable example:
+```bash
+export QASE_TESTOPS_CONFIGURATIONS_VALUES="browser=chrome,environment=staging"
+```
+#### CLI flag example:
+```bash
+pytest --qase-testops-configurations-values "browser=chrome,environment=staging"
+```
+`Notes:`
+- Format: "group1=value1,group2=value2"
+- Use createIfNotExists: true in your config file to automatically create configurations in Qase if they don’t exist.
+- If not set, no configurations will be added.
+
+### Filtering Test Results by Status
+You can filter which results to send based on status:
+```json
+{
+  "testops": {
+    "statusFilter": ["passed", "failed"]
+  }
+}
+```
+#### Environment variable example:
+```bash
+export QASE_TESTOPS_STATUS_FILTER="passed,failed"
+```
+#### CLI flag example:
+```bash
+pytest --qase-testops-status-filter "passed,failed"
+```
+### Status Mapping
+Map your local test statuses to Qase statuses:
+```json
+{
+  "statusMapping": {
+    "invalid": "failed",
+    "skipped": "passed"
+  }
+}
+```
+#### Environment variable example:
+```bash
+export QASE_STATUS_MAPPING="invalid=failed,skipped=passed"
+```
+#### CLI flag example:
+```bash
+pytest --qase-status-mapping="invalid=failed,skipped=passed"
+```
+More details: Status Mapping [Docs](https://github.com/qase-tms/qase-python/blob/main/qase-python-commons/docs/STATUS_MAPPING.md)
+
+---
