@@ -30,14 +30,17 @@ The supported Python versions are:
 
 ## New Features & Configuration
 ### Test Run Tags
-You can now add tags to test runs. Update your `qase.config.json` or pass tags via CLI:
+You can now add tags to test runs. Update your `qase.config.json`, environment variables, or CLI flags.
 
 ```json
 {
   "testops": {
-    "tags": ["smoke", "regression"]
+    "run": {
+      "tags": ["smoke", "regression"]
+    }
   }
 }
+
 ```
 #### Environment variable example:
 ```bash
@@ -48,13 +51,10 @@ export QASE_TESTOPS_RUN_TAGS="smoke,regression"
 pytest --qase-testops-run-tags "smoke,regression"
 ```
 ### Excluding Parameters from Results
-
 Specify parameters to exclude from results:
 ```json
 {
-  "testops": {
-    "exclude_parameters": ["browser", "environment"]
-  }
+"exclude_parameters": ["browser", "environment"]
 }
 ```
 #### Environment variable example:
@@ -67,7 +67,6 @@ pytest --qase-exclude-params "browser,environment"
 ```
 ### Test Run Configurations
 You can specify configurations for test runs via `qase.config.json`, environment variables, or CLI flags.
-Example `qase.config.json`:
 ```json
 {
   "testops": {
@@ -102,6 +101,7 @@ pytest --qase-testops-configurations-values "browser=chrome,environment=staging"
 - If not set, no configurations will be added.
 
 ### Filtering Test Results by Status
+You can filter which results to send based on status:
 ```json
 {
   "testops": {
@@ -118,7 +118,7 @@ export QASE_TESTOPS_STATUS_FILTER="passed,failed"
 pytest --qase-testops-status-filter "passed,failed"
 ```
 ### Status Mapping
-You can filter which results to send based on status:
+Map your local test statuses to Qase statuses:
 ```json
 {
   "statusMapping": {
