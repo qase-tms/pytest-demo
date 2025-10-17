@@ -117,7 +117,7 @@ export QASE_TESTOPS_STATUS_FILTER="passed,failed"
 ```bash
 pytest --qase-testops-status-filter "passed,failed"
 ```
-## Status Mapping
+### Status Mapping
 You can filter which results to send based on status:
 ```json
 {
