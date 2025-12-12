@@ -1,23 +1,39 @@
 # qase-pytest
 
-This is an example repository with tests in the `tests/examples/` directory. To run the tests :
+Capture your pytest test results along with all relevant metadata in Qase automatically using the qase-pytest reporter.
 
-1. Clone the repository with `git clone https://github.com/cskmnrpt/qase-pytest.git`.
-   To clone a different branch, other than `main`, use this command - <br> `git clone --single-branch --branch <branch-name> https://github.com/cskmnrpt/qase-pytest.git`
+## Try It Out Now
 
-2. Create and use a virtual environment:
-   a. Create a virtual environment with `virtualenv venv`, and activate it with `source venv/bin/activate`.
-      Run `pip install -r requirements.txt` from the root of this repository to install dependencies.
- 
-   b. Or, use [pipenv](https://realpython.com/pipenv-guide/) to handle dependencies: Install `pipenv` with homebrew: 
-      $ `brew install pipenv`
-      $ `pipenv shell`
-      $ `pipenv install`
+Want to see it in action? It only takes **3 minutes**! [Try it out now](./try_it_out.md)   
 
-3. Install the latest version of `chromedriver` with brew: $ `brew install chromedriver`
- 
-4. Install browsers, if you are using the `playwright` library: `playwright install`.
+---
 
-5. Create a `qase.config.json` in the root of the repository, and add your token, and project code.
+## Quick Essentials
 
-6. Run `pytest`.
+Here’s what makes it work:  
+
+- **API Token**: Identifies your workspace and permissions.  
+- **Project Code**: Identifies which project to write results to.  
+- **Mode**: Set to `testops` to enable the reporter.  
+
+---
+
+## How It Works
+
+The qase-pytest reporter acts as a bridge between pytest and Qase. It listens to pytest’s test runner, captures each test result along with relevant metadata, and then uses the Qase API to send this information to your project.
+
+---
+
+## Advanced Configuration
+
+Along with the essentials like the API token and project code, there are other options and variables that can be configured.
+
+For example, results can be sent to a **specific test run** using the `QASE_RUN_ID` variable.  
+
+Other reporter variables and options can be explored [here](YOUR_VARIABLES_LINK).
+
+---
+
+## Stay Updated
+
+Want to keep up with the latest reporter updates and features? Check out [this page](YOUR_UPDATES_LINK) to stay in the loop.  
