@@ -34,10 +34,11 @@ For example, results can be sent to a **specific test run** using the `QASE_TEST
 {
   "testops": {
     "run": {
-      "id": 123,
+      "id": 123
     }
   }
 }
+```
 
 Other reporter variables and options can be explored [here](./reporter_variables.md).
 
