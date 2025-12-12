@@ -28,12 +28,21 @@ The qase-pytest reporter acts as a bridge between pytest and Qase. It listens to
 
 Along with the essentials like the API token and project code, there are other options and variables that can be configured.
 
-For example, results can be sent to a **specific test run** using the `QASE_RUN_ID` variable.  
+For example, results can be sent to a **specific test run** using the `QASE_TESTOPS_RUN_ID` environment variable. Alternatively, if you have a configuration file, you can specify the run details:
 
-Other reporter variables and options can be explored [here](YOUR_VARIABLES_LINK).
+```json
+{
+  "testops": {
+    "run": {
+      "id": 123,
+    }
+  }
+}
+
+Other reporter variables and options can be explored [here](./reporter_variables.md).
 
 ---
 
 ## Stay Updated
 
-Want to keep up with the latest reporter updates and features? Check out [this page](YOUR_UPDATES_LINK) to stay in the loop.  
+Want to keep up with the latest reporter updates and features? Check out [this page](https://github.com/qase-tms/qase-python/blob/main/qase-pytest/changelog.md) to stay in the loop.
