@@ -1,12 +1,12 @@
 # qase-pytest
 
-If you run automated tests with pytest and want those results available in Qase, this repository shows how to report them using the qase-pytest reporter.
+If you run automated tests with pytest and want test those results available in Qase, this repository shows how to report them using the qase-pytest reporter.
 
 ---
 
 ## How It Works
 
-The qase-pytest reporter bridges your pytest suite with Qase, capturing test outcomes, execution time, and relevant metadata as tests run. These results are then sent to your Qase Workspace via the APIs.
+The qase-pytest reporter connects your pytest suite with Qase, capturing test outcomes, execution time, and relevant metadata as tests run. These results are then sent to your Qase Workspace via the APIs.
 
 ---
 
