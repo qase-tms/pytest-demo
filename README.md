@@ -1,16 +1,25 @@
 # qase-pytest
 
-Capture your pytest test results along with all relevant metadata in Qase automatically using the qase-pytest reporter.
+If you run automated tests with pytest and want those results available in Qase, this repository shows how to report them using the qase-pytest reporter.
 
-## Try It Out Now
+---
 
-Want to see it in action? It only takes **3 minutes**! [Try it out now](./try_it_out.md)   
+## How It Works
+
+The qase-pytest reporter bridges your pytest suite with Qase, capturing test outcomes, execution time, and relevant metadata as tests run. These results are then sent to your Qase Workspace via the APIs.
+
+---
+
+## See it in action
+
+If you already have a Qase workspace, you can get started by adding the qase-pytest reporter to your pytest test suite, setting a few environment variables, and running pytest as usual. 
+[Try it out now](./try_it_out.md)   
 
 ---
 
 ## Quick Essentials
 
-Here’s what makes it work:  
+There are three core settings that make the reporter work:
 
 - **API Token**: Identifies your workspace and permissions.  
 - **Project Code**: Identifies which project to write results to.  
@@ -18,15 +27,17 @@ Here’s what makes it work:
 
 ---
 
-## How It Works
+## How it fits into your test flow
 
-The qase-pytest reporter acts as a bridge between pytest and Qase. It listens to pytest’s test runner, captures each test result along with relevant metadata, and then uses the Qase API to send this information to your project.
+No changes are required to how tests are written or executed in your test suite.
+The reporter hooks into pytest, capturing results and sending them to Qase.
+CI pipelines or local test commands will continue to operate as-is.
 
 ---
 
 ## Advanced Configuration
 
-Along with the essentials like the API token and project code, there are other options and variables that can be configured.
+Beyond the basics like the API token, project code and reporter mode, there are other reporter variables that can be configured to fine tune how and where results are reported.
 
 For example, results can be sent to a **specific test run** using the `QASE_TESTOPS_RUN_ID` environment variable. Alternatively, if you have a configuration file, you can specify the run details:
 
@@ -46,4 +57,4 @@ Other reporter variables and options can be explored [here](./reporter_variables
 
 ## Stay Updated
 
-Want to keep up with the latest reporter updates and features? Check out [this page](https://github.com/qase-tms/qase-python/blob/main/qase-pytest/changelog.md) to stay in the loop.
+For updates on reporter features, changes, and improvements, check [this page](https://github.com/qase-tms/qase-python/blob/main/qase-pytest/changelog.md).
