@@ -12,8 +12,9 @@ The qase-pytest reporter bridges your pytest suite with Qase, capturing test out
 
 ## See it in action
 
-If you already have a Qase workspace, you can get started by adding the qase-pytest reporter to your pytest test suite, setting a few environment variables, and running pytest as usual. 
-[Try it out now](./try_it_out.md)   
+If you already have a Qase workspace, you can get started by adding the qase-pytest reporter to your pytest test suite, setting a few environment variables, and running pytest as usual.
+
+[Try it out now](./try_it_out.md).
 
 ---
 
