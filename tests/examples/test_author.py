@@ -1,6 +1,6 @@
 from qase.pytest import qase
 
 
-@qase.author("Bret S")
+@qase.author("Vikas N")
 def test_qase_author():
     assert True
