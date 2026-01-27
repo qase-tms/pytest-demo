@@ -18,6 +18,12 @@ This is an example repository with tests in the `tests/examples/` directory. To 
  
 4. Install browsers, if you are using the `playwright` library: `playwright install`.
 
-5. Create a `qase.config.json` in the root of the repository, and add your token, and project code.
+5. Create a `qase.config.json` in the root of the repository:
+   - Copy the example file: `cp qase.config.json.example qase.config.json`
+   - Edit `qase.config.json` and replace `<your_api_token_here>` with your Qase API token
+   - Replace `<your_project_code_here>` with your Qase project code
+   
+   **Note:** `qase.config.json` is gitignored for security (contains sensitive credentials). 
+   Use `qase.config.json.example` as a template.
 
 6. Run `pytest`.

@@ -9,7 +9,7 @@ class TestLoginFlow:
 
     @qase.step("Verify page loading")
     def verify_page_loading(self):
-        assert True, "Page loaded successfully"
+        assert True
 
     @qase.step("Fill the required fields")
     def fill_the_required_fields(self):
@@ -18,20 +18,20 @@ class TestLoginFlow:
 
     @qase.step("Fill username")
     def fill_username(self):
-        assert True, "Username filled"
+        assert True
 
     @qase.step("Fill password")
     def fill_password(self):
-        assert True, "Password filled"
+        assert True
 
     @qase.step("Click the login button")
     def click_login_button(self):
-        assert True, "Login button clicked"
+        assert True
 
-    @qase.step("Verify the landing page header")
+    @qase.step("Verify the landing page header", expected="Header should display 'Welcome, User!'")
     def verify_landing_page_header(self):
         header_text = "Welcome, User!"
-        assert header_text == "Welcome, User!", "Header text is incorrect"
+        assert header_text == "Welcome, User!"
 
     @qase.title("Login Flow")
     def test_login_flow(self):
@@ -45,9 +45,6 @@ class TestDeleteProject:
 
     @qase.title("Delete Project")
     def test_delete_project(self):
-        """
-        Using the 'with' syntax.
-        """
         with qase.step("Navigate to projects page"):
             self.verify_page_loading()
 
@@ -55,19 +52,19 @@ class TestDeleteProject:
             self.click_delete_button()
 
         with qase.step("Click the delete button"):
-            assert True, "Delete button clicked"
+            assert True
 
         with qase.step("Confirm the project deletion"):
-            assert True, "Project deletion confirmed"
+            assert True
 
-        with qase.step("Verify the project was deleted"):
+        with qase.step("Verify the project was deleted", expected="Project should be removed from the list"):
             self.verify_project_deleted()
 
     def verify_page_loading(self):
-        assert True, "Projects page loaded successfully"
+        assert True
 
     def click_delete_button(self):
-        assert True, "Delete button clicked"
+        assert True
 
     def verify_project_deleted(self):
-        assert True, "Project deleted successfully"
+        assert True
