@@ -1,4 +1,4 @@
-name: "[Test] - Pytest - Admin"
+name: "[Test] - Cypress - Admin"
 
 run-name: "${{ github.workflow }}: ${{ github.ref_name }} - ${{ inputs.environment }}"
 
@@ -23,19 +23,55 @@ on:
       environment:
         type: choice
         description: Deployment Environment
-        required: false
-        default: 'staging'
+        required: true
+        default: 'coffee'
         options:
-          - staging
-          - production
+          - coffee
+          - fail
+          - how
+          - lol
+          - maison
+          - ninja
+          - red
+          - rip
+          - wtf
+          - wine
       test:
-        description: Select test directory
-        required: false
+        description: Select test
+        required: true
         type: choice
-        default: '**'
+        default: 'noteTab'
         options:
           - '**'
-          - examples
+          - noteTab
+          - refundTab
+          - reviewTab
+          - relatedTab
+          - summaryTab
+          - transactionsPage
+          - userPermissions
+      number-of-concurrent-jobs:
+        type: string
+        default: '[1,2,3]'
+  workflow_call:
+    inputs:
+      qase_api_base_url:
+        type: string
+      qase_report:
+        type: string
+      qase_project_code:
+        type: string
+      qase_run_id:
+        type: string
+      qase_run_complete:
+        type: string
+      environment:
+        type: string
+      test:
+        type: string
+      number-of-concurrent-jobs:
+        type: string
+        default: '[1,2,3]'
 
 env:
   QASE_API_BASE_URL: ${{ inputs.qase_api_base_url }}
@@ -46,9 +82,12 @@ env:
   QASE_MODE: "testops"
 
 jobs:
-  pytest-test:
-    runs-on: ubuntu-latest
-
+  cypress-test:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: ${{ fromJson(inputs.number-of-concurrent-jobs) }}
     steps:
       - uses: cskmnrpt/qase-link-run@v2
         env:
@@ -76,7 +115,7 @@ jobs:
 
       - name: Run Pytest tests
         run: |
-          pytest tests/${{ inputs.test }}/ -v
+          pytest tests/ -v
         env:
           QASE_MODE: "testops"
           QASE_TESTOPS_PROJECT: "QTP"
