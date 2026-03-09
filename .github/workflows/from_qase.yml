@@ -1,4 +1,7 @@
-name: Trigger from Qase
+name: "[Test] - Pytest - Admin"
+
+run-name: "${{ github.workflow }}: ${{ github.ref_name }} - ${{ inputs.environment }}"
+
 on:
   workflow_dispatch:
     inputs:
@@ -17,6 +20,22 @@ on:
       qase_run_complete:
         description: "Qase Run autocomplete"
         required: true
+      environment:
+        type: choice
+        description: Deployment Environment
+        required: false
+        default: 'staging'
+        options:
+          - staging
+          - production
+      test:
+        description: Select test directory
+        required: false
+        type: choice
+        default: '**'
+        options:
+          - '**'
+          - examples
 
 env:
   QASE_API_BASE_URL: ${{ inputs.qase_api_base_url }}
@@ -27,7 +46,7 @@ env:
   QASE_MODE: "testops"
 
 jobs:
-  test:
+  pytest-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,6 +56,11 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
 
       - name: Cache Python dependencies
         uses: actions/cache@v3
@@ -49,9 +73,14 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          playwright install-deps
-          playwright install webkit
 
       - name: Run Pytest tests
         run: |
-          pytest tests/
+          pytest tests/${{ inputs.test }}/ -v
+        env:
+          QASE_MODE: "testops"
+          QASE_TESTOPS_PROJECT: "QTP"
+          QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
+          QASE_TESTOPS_RUN_ID: ${{ inputs.qase_run_id }}
+          QASE_TESTOPS_RUN_COMPLETE: "true"
+          QASE_ENVIRONMENT: ${{ inputs.environment }}
