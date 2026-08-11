@@ -1,0 +1,52 @@
+.github/workflows/from_qase.yml
+  h_ca615df2b152cf 1-57
+.github/workflows/on_push.yml
+  h_ca615df2b152cf 1-55
+.gitignore
+  h_ca615df2b152cf 1-168
+LICENSE
+  h_ca615df2b152cf 1-24
+Pipfile
+  h_ca615df2b152cf 1-15
+Pipfile.lock
+  h_ca615df2b152cf 1-619
+README.md
+  h_ca615df2b152cf 1-140
+conftest.py
+  h_ca615df2b152cf 1-30
+qase_mapping.json
+  h_ca615df2b152cf 1-5
+requirements.txt
+  h_ca615df2b152cf 1-5
+tests/examples/captureLogs/test_stderr.py
+  h_ca615df2b152cf 1-20
+tests/examples/captureLogs/test_stdout.py
+  h_ca615df2b152cf 1-20
+tests/examples/markdown.md
+  h_ca615df2b152cf 1-111
+tests/examples/playwright/README.md
+  h_ca615df2b152cf 1-32
+tests/examples/playwright/conftest.py
+  h_ca615df2b152cf 1-19
+tests/examples/playwright/test_playwright.py
+  h_ca615df2b152cf 1-20
+tests/examples/profilers/test_http.py
+  h_ca615df2b152cf 1-51
+tests/examples/profilers/test_sleep.py
+  h_ca615df2b152cf 1-29
+tests/examples/selenium/conftest.py
+  h_ca615df2b152cf 1-49
+tests/examples/test_network_prb.py
+  h_ca615df2b152cf 1-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "c6ae772fccccce8491c59b746013fc1021f130ac",
+  "prompts": {},
+  "humans": {
+    "h_ca615df2b152cf": {
+      "author": "Ankita Dasgupta <ankitadasgupta@Ankitas-MacBook-Air.local>"
+    }
+  }
+}
