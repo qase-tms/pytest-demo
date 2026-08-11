@@ -1,0 +1,22 @@
+tests/bug_repro/qase_api_client_isManual_bool/test_ismanual_bool_regression.py
+  s_0cb92a46ed500c::t_3807f39232f84f 30,47
+  s_0cb92a46ed500c::t_789b3150152179 1-29,31-46,48-72
+tests/bug_repro/qase_api_client_isManual_bool/README.md
+  s_0cb92a46ed500c::t_46db3eb139910c 1-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "ba39741a8c876fd4bd6ea2a0480396452afa383f",
+  "prompts": {},
+  "sessions": {
+    "s_0cb92a46ed500c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c168ca47-594d-4ebc-9015-f5fdbee0bc79",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Manju R <cskmnrpt@gmail.com>"
+    }
+  }
+}
